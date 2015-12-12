@@ -1,1 +1,39 @@
 
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+
+<script type="text/javascript">
+$(function(){
+    $("#image").change(function(){
+        var file=$("#image").get(0).files[0];
+         var reader = new FileReader();
+        reader.onload = (function(){
+        return function(e) {
+         
+          var image = '<img  src="'+ e.target.result +'"  width="200px" hiegt="200px">';
+           $("#imagePreview").html(image)                
+        };
+      })();
+      
+      reader.readAsDataURL(file);
+    });
+})
+</script>
+<style type="text/css">
+#imagePreview{
+width:200px;
+height:200px;
+background-color:#3D6AA2;    
+}
+</style>
+</head>
+<body>
+
+<input type="file" id="image"/>
+<div id="imagePreview"></div>
+
+</body>
+</html
